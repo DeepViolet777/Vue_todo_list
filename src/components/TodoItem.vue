@@ -1,6 +1,5 @@
 <template>
 <div class="todo-item">
-    <v-app>
         <v-container class="container">
             <v-row class="d-flex justify-center mb-6"> 
         <v-col cols="12" md="6"> 
@@ -16,10 +15,11 @@
                 {{ task.isDone }}
             </span> -->
           <!--   <div class="todo-item"/>   v-for="(task, index) in tasks" :key="task.id"> -->
-                        <span>{{ this.task.id}}.</span>
-                        <span :class="{done:task.isDone}"> {{ this.task.text }}</span>
+                        <span>{{ task_data.id + 1 }}.</span>
+                        <span :class="{done:task_data.isDone}"> {{ task_data.text }}</span>
                         <v-list-item-action class="task-check">
-                            <v-checkbox @change="checkTask" v-model="task.isDone" :input-value="active" color="teal darken-2"></v-checkbox>
+                            <v-checkbox @change="checkTask" :class="task_data.isDone" :input-value="active" color="teal darken-2"></v-checkbox>
+                           
                         </v-list-item-action>
                         <div class="btn-container">
                             <v-icon class="edit-btn" @click="editTask(task)">
@@ -34,22 +34,28 @@
                  </v-col>
             </v-row>
         </v-container>
-
-    </v-app>
 </div>
 </template>
 
 <script>
 export default {
     name: 'todo-item',
-    // props: ['task'],
+     props: {
+        task_data:{
+            type: Object,
+            default(){
+                return {}
+            }
+        }
+    },
     data() {
         return {
-            task: {
-                id: 0,
-                text: "",
-                isDone: false
-            }}},
+            // task: {
+            //     id: 0,
+            //     text: "",
+            //     isDone: false
+            task: this.task_data
+            }},
 
     //         // taskText: "",
 

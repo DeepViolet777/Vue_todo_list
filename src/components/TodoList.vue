@@ -8,16 +8,25 @@
                         <v-text-field type="text" name="todo-input" placeholder="Write a task" v-model="taskText" required></v-text-field>
                         <v-btn color="primary" @click="addTask">Add task</v-btn>
                     </v-form> -->
-                   
-            
-                        <!-- <v-list-item> -->
-                            <todo-item  v-for="task in tasks" :key="task.id" :text="task.text"/> 
-                            
-                        
-                           <!-- {{ tasks }} -->
-                        <!-- </v-list-item> -->
-                        <!-- <h2 class="todo-title" v-if="tasks.length">Task list:</h2> -->
-                        <!-- <v-list-item class="todo-item" v-for="(task, index) in tasks" :key="task.id">
+
+                    <!-- <v-list-item> -->
+                     <todo-item v-for="task in tasks" :key="task.id" :task_data="task"/>  
+                    <!-- <li v-for="task in tasks" :key="task.id" :text="task.text">
+                        <span>
+                            {{ task.id + 1}}
+                        </span>
+                        <span>
+                            {{ task.text }}
+                        </span>
+                        <span>
+                            {{ task.isDone }}
+                        </span>
+                    </li> -->
+
+                    <!-- {{ tasks }} -->
+                    <!-- </v-list-item> -->
+                    <!-- <h2 class="todo-title" v-if="tasks.length">Task list:</h2> -->
+                    <!-- <v-list-item class="todo-item" v-for="(task, index) in tasks" :key="task.id">
                             <span>{{ index + 1 }}.</span>
                             <span :class="{done:task.isComplite}"> {{ task.text }}</span>
                             <v-list-item-action class="task-check">
@@ -33,8 +42,7 @@
                             </div>
 
                         </v-list-item> -->
-                       
-             
+
                 </v-col>
             </v-row>
         </v-container>
@@ -44,12 +52,12 @@
 </template>
 
 <script>
-import TodoItem from './TodoItem';
+ import TodoItem from './TodoItem';
 export default {
     name: 'todo-list',
 
     components: {
-        TodoItem, 
+         TodoItem, 
     },
 
     data() {
@@ -75,41 +83,41 @@ export default {
 
     // },
     methods: {
-    //     addTask() {
-    //         this.$store.commit('addTask')
-    // console.log(this.$store.state.tasks)
-    //     },
-            // if (this.isEdit === false) {
-            //     this.id++;
-            //     this.tasks.push({
-            //         id: this.id,
-            //         text: this.taskText,
-            //         isComplite: this.isDone
-            //     });
-            //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
-            //     this.taskText = "";
-            // } else {
+        //     addTask() {
+        //         this.$store.commit('addTask')
+        // console.log(this.$store.state.tasks)
+        //     },
+        // if (this.isEdit === false) {
+        //     this.id++;
+        //     this.tasks.push({
+        //         id: this.id,
+        //         text: this.taskText,
+        //         isComplite: this.isDone
+        //     });
+        //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        //     this.taskText = "";
+        // } else {
 
-            //     this.tasks.map(function (item) {
-            //         if (item.id === this.task.id) {
-            //             this.task.text = this.taskText;
-            //         }
-            //     });
-                // this.isEdit = false;
-            //}
-            //  this.task.text = this.taskText;
-            //if (this.isEdit === true && ){
-            //    let currentTask = this.tasks.filter(task => task.text === this.taskText)
-            //   currentTask.text = this.taskText;
-            //   console.log(currentTask)
-            // this.isEdit = false;
+        //     this.tasks.map(function (item) {
+        //         if (item.id === this.task.id) {
+        //             this.task.text = this.taskText;
+        //         }
+        //     });
+        // this.isEdit = false;
+        //}
+        //  this.task.text = this.taskText;
+        //if (this.isEdit === true && ){
+        //    let currentTask = this.tasks.filter(task => task.text === this.taskText)
+        //   currentTask.text = this.taskText;
+        //   console.log(currentTask)
+        // this.isEdit = false;
 
-            //     this.task.text = this.taskText;
+        //     this.task.text = this.taskText;
 
-            //     this.taskText = "";
-            //     // 
+        //     this.taskText = "";
+        //     // 
 
-       // },
+        // },
         // checkTask() {
         //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
         // },
@@ -130,14 +138,13 @@ export default {
     // computed:{
     //     tasks(){
     //         return this.$store.state.tasks;
-            
+
     //     }
     // },
 }
 </script>
 
 <style lang="scss">
-
 .todo {
     &-item {
         border: 2px solid #26A69A;
